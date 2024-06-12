@@ -6,7 +6,7 @@ Developed an innovative IoT-based smart cane designed to enhance the mobility an
 ## Key Features:
 
 ### Obstacle Detection: 
-Utilized HC-SR04 ultrasonic sensors for detecting obstacles at various heights, ensuring comprehensive environmental awareness.
+Utilized HC-SR04 ultrasonic sensors for detecting obstacles at various heights, ensuring comprehensive environmental awareness.It also detect horizontal object.
 
 ### Surface Condition Detection: 
 Employed a soil moisture sensor to detect wet or muddy surfaces, preventing slips and falls.
