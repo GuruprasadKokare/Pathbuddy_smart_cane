@@ -60,6 +60,7 @@ class Emerge extends StatelessWidget {
                               Text("Add Emergency Contacts",
                                   style: TextStyle(
                                       fontSize: 20,
+                                      color: Colors.black,
                                       fontWeight: FontWeight.bold)),
                               // Padding(
                               //   padding: const EdgeInsets.symmetric(

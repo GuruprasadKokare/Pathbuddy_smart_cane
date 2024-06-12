@@ -56,15 +56,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Emergency(),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(
-                        "Emergency Contact button",
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    EmergencyScreen(), // Assuming this is the Emergency contact button widget
+                    // Padding(
+                    //   padding: const EdgeInsets.all(10.0),
+                    //   child: Text(
+                    //     "Emergency Contact button",
+                    //     style: TextStyle(
+                    //         fontSize: 24, fontWeight: FontWeight.bold),
+                    //   ),
+                    // ),
+                    EmergencyScreen(),
                   ],
                 ),
               ),

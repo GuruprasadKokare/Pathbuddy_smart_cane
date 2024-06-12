@@ -16,22 +16,14 @@ class _EmergencyScreenState extends State<EmergencyScreen>
     with TickerProviderStateMixin {
   final textController = TextEditingController();
 
-  //Timer, controller
-  late AnimationController _controller;
-  int levelClock = 180;
-
   //Saving phoneNumber
   static const String NUM_KEY = "EmergencyNumber";
   late String emergencyNumber = "911";
 
-  // void pauseTimer() {
-  //   _controller.reset();
-  // }
-
   @override
   void dispose() {
     textController.dispose();
-    _controller.dispose();
+
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
@@ -48,13 +40,6 @@ class _EmergencyScreenState extends State<EmergencyScreen>
     super.initState();
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     Wakelock.enable();
-
-    // _controller = AnimationController(
-    //     vsync: this,
-    //     duration: const Duration(
-    //         seconds:
-    //             60) // gameData.levelClock is a user entered number elsewhere in the applciation
-    //     );
   }
 
   void loadEmergencyNumber() async {
@@ -75,6 +60,13 @@ class _EmergencyScreenState extends State<EmergencyScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Text('Add Emergency Contact'),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -84,115 +76,79 @@ class _EmergencyScreenState extends State<EmergencyScreen>
               child: SafeArea(
                 child: Center(
                   child: TextButton(
-                      onPressed: () => showDialog<String>(
-                          context: context,
-                          builder: (BuildContext context) => Dialog(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(15.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      const Text(
-                                        'Type in your Emergency Number',
-                                        style: TextStyle(
+                    onPressed: () => showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => Dialog(
+                              child: Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    const Text(
+                                      'Type in your Emergency Number',
+                                      style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.bold,
-                                        ),
+                                          color:
+                                              Color.fromARGB(255, 222, 0, 0)),
+                                    ),
+                                    const SizedBox(height: 20),
+                                    TextField(
+                                      controller: textController,
+                                      //obscureText: true,
+                                      decoration: const InputDecoration(
+                                        border: OutlineInputBorder(),
+                                        labelText: '+91 9988776655',
                                       ),
-                                      const SizedBox(height: 20),
-                                      TextField(
-                                        controller: textController,
-                                        //obscureText: true,
-                                        decoration: const InputDecoration(
-                                          border: OutlineInputBorder(),
-                                          labelText: 'EmergencyNumber',
-                                        ),
-                                        keyboardType: TextInputType.phone,
+                                      keyboardType: TextInputType.phone,
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        updateEmergencyNumber(
+                                            textController.text);
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text(
+                                        'Save',
+                                        style: TextStyle(
+                                            color:
+                                                Color.fromARGB(255, 0, 0, 0)),
                                       ),
-                                      TextButton(
-                                        onPressed: () {
-                                          updateEmergencyNumber(
-                                              textController.text);
-                                          Navigator.pop(context);
-                                        },
-                                        child: const Text('Save'),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                              )),
-                      child: Text(
-                        "Add Emergency Contact",
-                        style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline),
-                      )),
+                              ),
+                            )),
+                    child: Text(
+                      "Add Emergency Contact",
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 255, 27, 27),
+                          decoration: TextDecoration.none),
+                    ),
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          // side: BorderSide(color: Colors.black),
+                        ),
+                      ),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        Color.fromARGB(81, 158, 158, 158),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
             const SizedBox(
               height: 180,
             ),
-            // ElevatedButton(
-            //   onPressed: _incrementCounter,
-            //   child: Countdown(
-            //     animation: StepTween(
-            //       begin: 60, // THIS IS A USER ENTERED NUMBER
-            //       end: 0,
-            //     ).animate(_controller),
-            //   ),
-            // ),
           ],
         ),
       ),
-      // floatingActionButton: ElevatedButton(
-      //   //FloatingActionButton(
-      //   onPressed: pauseTimer,
-      //   //tooltip: 'Cancel',
-      //   child: const Text(
-      //     'Cancel',
-      //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-      //   ),
-      // ),
     );
   }
 }
-
-// class Countdown extends AnimatedWidget {
-//   Countdown({Key? key, required this.animation})
-//       : super(key: key, listenable: animation);
-//   Animation<int> animation;
-//   bool isCalled = false;
-
-//   @override
-//   build(BuildContext context) {
-//     Duration clockTimer = Duration(seconds: animation.value);
-
-//     String timerText =
-//         '${clockTimer.inMinutes.remainder(60).toString()}:${clockTimer.inSeconds.remainder(60).toString().padLeft(2, '0')}';
-
-    //print('animation.value  ${animation.value} ');
-    //print('inMinutes ${clockTimer.inMinutes.toString()}');
-    //print('inSeconds ${clockTimer.inSeconds.toString()}');
-    //print('inSeconds.remainder ${clockTimer.inSeconds.remainder(60).toString()}');
-
-    // if (!isCalled) {
-    //   FlutterPhoneDirectCaller.callNumber(globals.emergencyNumber);
-    //   isCalled = true;
-    // }
-
-    // if (clockTimer.inSeconds <= 35 && !isCalled) {
-    //   HapticFeedback.heavyImpact();
-    // }
-
-    // return Text(
-    //   "$timerText",
-    //   style: TextStyle(
-    //     fontSize: 110,
-    //     color: Theme.of(context).primaryColor,
-    //   ),
-    // );
-//   }
-// }
