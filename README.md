@@ -6,7 +6,7 @@ Developed an innovative IoT-based smart cane designed to enhance the mobility an
 ## Key Features:
 
 ### Obstacle Detection: 
-Utilized HC-SR04 ultrasonic sensors for detecting obstacles at various heights, ensuring comprehensive environmental awareness.It also detect horizontal object.
+Utilized HC-SR04 ultrasonic sensors for detecting obstacles at various heights, ensuring comprehensive environmental awareness.
 
 ### Surface Condition Detection: 
 Employed a soil moisture sensor to detect wet or muddy surfaces, preventing slips and falls.
@@ -32,3 +32,7 @@ PathBuddy significantly improves the independence and safety of visually impaire
   <img src="https://github.com/GuruprasadKokare/Pathbuddy_smart_cane/assets/109871757/9a33d058-ac64-47ea-8606-0cd11d0f0429">
 </p>
 
+### Mobile Application
+<img src="https://github.com/GuruprasadKokare/Pathbuddy_smart_cane/assets/109871757/253b8ecd-064e-4a15-a26e-693cf569915a" style= "width:30%">
+<img src="https://github.com/GuruprasadKokare/Pathbuddy_smart_cane/assets/109871757/253b8ecd-064e-4a15-a26e-693cf569915a" style= "width:30%">
+<img src="https://github.com/GuruprasadKokare/Pathbuddy_smart_cane/assets/109871757/47f1a294-69e0-4faa-9959-c660d75f38df" style= "width:30%">
