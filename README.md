@@ -31,7 +31,7 @@ PathBuddy significantly improves the independence and safety of visually impaire
   
   <img src="https://github.com/GuruprasadKokare/Pathbuddy_smart_cane/assets/109871757/9a33d058-ac64-47ea-8606-0cd11d0f0429">
 </p>
-<p> </p>
+
 ### Mobile Application
 <div style="margin: 100px">
 <img src="https://github.com/GuruprasadKokare/Pathbuddy_smart_cane/assets/109871757/253b8ecd-064e-4a15-a26e-693cf569915a" style= "width:30%">
